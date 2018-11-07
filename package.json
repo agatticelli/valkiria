@@ -4,7 +4,7 @@
   "description": "Configuration manager for Node apps.",
   "main": "index.js",
   "scripts": {
-    "test-unit": "NODE_ENV=test mocha './**/*.spec.js'",
+    "test-unit": "NODE_ENV=test mocha './test/**/*.spec.js'",
     "lint": "./node_modules/.bin/eslint ./**/*.js"
   },
   "repository": {
