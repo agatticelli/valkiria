@@ -4,8 +4,8 @@ module.exports = {
   database: 'testBase',
   credentials: {
     user: 'testUser',
-    password: 'testPass'
+    password: 'testPass',
   },
   driver: null,
-  snapshots: 0
-}
+  snapshots: 0,
+};

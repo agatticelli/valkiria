@@ -1,5 +1,3 @@
-
-
 const fs = require('fs');
 const path = require('path');
 
@@ -38,6 +36,7 @@ module.exports = function() {
 
     parseObject: function(obj, filename) {
       return filename ? {[filename]: obj} : obj;
-    }
-  }
-}
+    },
+
+  };
+};

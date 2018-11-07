@@ -2,7 +2,6 @@ const expect = require('chai').expect;
 const path = require('path');
 
 describe('Update volatile configuration', () => {
-  
   it('Update only one key (not nested)', () => {
     const fileToLoad = path.join(__dirname, './config/db.js');
 
@@ -44,20 +43,19 @@ describe('Update volatile configuration', () => {
     const newPortValue = 3307;
     valkiria({
       host: newHostValue,
-      port: newPortValue
+      port: newPortValue,
     });
     expect(JSON.stringify(valkiria())).to.not.eq(JSON.stringify(rawObj));
     expect(valkiria('host')).to.eq(newHostValue);
     expect(valkiria('port')).to.eq(newPortValue);
   });
-  
+
   it('Update entire object (nested)', () => {
     const pathToLoad = path.join(__dirname, './config');
-    
+
     const valkiria = require(path.join(__dirname, '../'))(pathToLoad);
     const rawDbConfig = require(`${pathToLoad}${path.sep}/db`);
     const valkiriaDbObj = valkiria('db');
-
 
     expect(JSON.stringify(valkiriaDbObj)).to.eq(JSON.stringify(rawDbConfig));
     // now change some db settings
@@ -65,11 +63,12 @@ describe('Update volatile configuration', () => {
     const newPortValue = 3307;
     valkiria({
       'db.host': newHostValue,
-      'db.port': newPortValue
+      'db.port': newPortValue,
     });
-    expect(JSON.stringify(valkiria('db'))).to.not.eq(JSON.stringify(rawDbConfig));
+    expect(
+        JSON.stringify(valkiria('db'))
+    ).to.not.eq(JSON.stringify(rawDbConfig));
     expect(valkiria('db.host')).to.eq(newHostValue);
     expect(valkiria('db.port')).to.eq(newPortValue);
   });
-
 });

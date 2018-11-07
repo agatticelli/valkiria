@@ -1,10 +1,8 @@
-const fs = require('fs');
-
 const deployer = require('./valkiria/deployer');
-const Loader = require('./valkiria/loader');
+const loaderBuilder = require('./valkiria/loader');
 
-module.exports = (configPath) => {
-  const loader = Loader();
+module.exports = configPath => {
+  const loader = loaderBuilder();
   const loadedConfigMap = loader.loadPath(configPath);
   return deployer(loadedConfigMap);
-}
+};
