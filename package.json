@@ -4,7 +4,8 @@
   "description": "Configuration manager for Node apps.",
   "main": "index.js",
   "scripts": {
-    "test-unit": "NODE_ENV=test mocha './**/*.spec.js'"
+    "test-unit": "NODE_ENV=test mocha './**/*.spec.js'",
+    "lint": "./node_modules/.bin/eslint ./**/*.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,8 @@
   "homepage": "https://github.com/agatticelli/valkiria#readme",
   "devDependencies": {
     "chai": "^4.2.0",
+    "eslint": "^5.8.0",
+    "eslint-config-google": "^0.11.0",
     "mocha": "^5.2.0"
   }
 }
