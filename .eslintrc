@@ -1,0 +1,12 @@
+{
+  "extends": ["eslint:recommended", "google"],
+  "env": {
+    "node": true,
+    "mocha": true,
+    "es6": true
+  },
+  "rules": {
+    "no-multiple-empty-lines": ["error", {"max": 1}],
+    "arrow-parens": ["error", "as-needed"],
+  }
+}
