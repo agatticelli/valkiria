@@ -45,13 +45,27 @@ describe('Load entire config folder', () => {
     const valkiria = require(path.join(__dirname, '../'))(pathToLoad);
     const rawAppConfig = require(`${pathToLoad}${path.sep}/app`);
     const rawDbConfig = require(`${pathToLoad}${path.sep}/db`);
+    const rawMappingConfig = require(`${pathToLoad}${path.sep}/mapping`);
 
     const valkiriaAppObj = valkiria('app');
     const valkiriaCredentialsObj = valkiria('db.credentials');
+    const valkiriaMappingObj = valkiria('mapping');
 
     expect(JSON.stringify(valkiriaAppObj)).to.eq(JSON.stringify(rawAppConfig));
     expect(
         JSON.stringify(valkiriaCredentialsObj)
     ).to.eq(JSON.stringify(rawDbConfig.credentials));
+    expect(valkiriaMappingObj.version).to.eq(rawMappingConfig.version);
+  });
+
+  it('Should ignore not .js files', () => {
+    const pathToLoad = path.join(__dirname, './config');
+
+    const valkiria = require(path.join(__dirname, '../'))({
+      path: pathToLoad,
+      extensions: ['js'],
+    });
+
+    expect(valkiria('mapping')).to.eq(undefined);
   });
 });
