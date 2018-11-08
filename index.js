@@ -1,5 +1,5 @@
-const deployer = require('./valkiria/deployer');
-const loaderBuilder = require('./valkiria/loader');
+const deployer = require('./lib/valkiria/deployer');
+const loaderBuilder = require('./lib/valkiria/loader');
 
 module.exports = configPath => {
   const loader = loaderBuilder();
